@@ -1,0 +1,22 @@
+{
+  "name": "7amoo-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "7amoo — Gamer / Streamer / Content Creator landing page.",
+  "scripts": {
+    "dev": "npx serve -l 3000 .",
+    "start": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "7amoo",
+    "streamer",
+    "kick",
+    "tiktok",
+    "gaming"
+  ],
+  "author": "MaviS",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
