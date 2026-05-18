@@ -18,9 +18,9 @@ const I18N = {
 
     aboutTag:'WHO IS',
     aboutTitle:'7amoo',
-    aboutBody:'Full-time Egyptian streamer and content creator. Competitive games, long live sessions, raw energy, and a squad that grows every single day. Pull up a chair, it gets loud in here.',
-    tags:['FPS','OPEN WORLD','IRL','JUST CHATTING','TOURNAMENTS','NO SLEEP'],
-    marquee:['KICK STREAMER','CONTENT CREATOR','GAMER','EGYPT','NO SLEEP MODE','LIVE DAILY'],
+    aboutBody:'A rising Egyptian streamer and a lifelong gamer. Fighting games are his home turf, with a deep love for GTA and role-play. High energy, long live sessions, and a community that grows every single day.',
+    tags:['FIGHTING GAMES','GTA','ROLE-PLAY','OPEN WORLD','RISING','NO SLEEP'],
+    marquee:['RISING STREAMER','FIGHTING GAMES','GTA · RP','GAMER','EGYPT','NO SLEEP'],
 
     commTag:'THE SQUAD',
     commTitle:'JOIN THE COMMUNITY',
@@ -52,9 +52,9 @@ const I18N = {
 
     aboutTag:'مين هو',
     aboutTitle:'7amoo',
-    aboutBody:'ستريمر مصري وصانع محتوى دوام كامل. ألعاب تنافسية، لايفات طويلة، طاقة عالية، ومجتمع بيكبر كل يوم. اقعد معانا، الجو بيعلى هنا.',
-    tags:['FPS','عالم مفتوح','IRL','دردشة','بطولات','بدون نوم'],
-    marquee:['ستريمر KICK','صانع محتوى','جيمر','مصر','بدون نوم','بث يومي'],
+    aboutBody:'ستريمر مصري صاعد وجيمر من زمان. أكتر حاجة بيحبها ألعاب الفايت، وعاشق GTA والرول بلاي. طاقة عالية، لايفات طويلة، ومجتمع بيكبر كل يوم.',
+    tags:['ألعاب فايت','GTA','رول بلاي','عالم مفتوح','صاعد','بدون نوم'],
+    marquee:['ستريمر صاعد','ألعاب فايت','GTA · رول بلاي','جيمر','مصر','بدون نوم'],
 
     commTag:'الفريق',
     commTitle:'انضم للمجتمع',
