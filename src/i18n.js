@@ -13,12 +13,12 @@ const I18N = {
 
     chTitleA:'EVERY CHANNEL.',
     chTitleB:'ONE PLACE.',
-    chSub:'Pick your platform — the stream never sleeps.',
+    chSub:'Pick your platform. The stream never sleeps.',
     act:{ kick:'Watch live', tiktok:'Follow', instagram:'Follow', discord:'Join server', whatsapp:'Join channel' },
 
     aboutTag:'WHO IS',
     aboutTitle:'7amoo',
-    aboutBody:'Full-time Egyptian streamer and content creator. Competitive games, long live sessions, raw energy, and a squad that grows every single day. Pull up a chair — it gets loud in here.',
+    aboutBody:'Full-time Egyptian streamer and content creator. Competitive games, long live sessions, raw energy, and a squad that grows every single day. Pull up a chair, it gets loud in here.',
     tags:['FPS','OPEN WORLD','IRL','JUST CHATTING','TOURNAMENTS','NO SLEEP'],
     marquee:['KICK STREAMER','CONTENT CREATOR','GAMER','EGYPT','NO SLEEP MODE','LIVE DAILY'],
 
@@ -29,7 +29,6 @@ const I18N = {
     whatsappCta:'WhatsApp Channel',
 
     footTagline:'See you in the next stream.',
-    craftedBy:'CRAFTED BY',
     rights:'© 2026 7amoo · All rights reserved',
     backTop:'Back to top',
 
@@ -48,12 +47,12 @@ const I18N = {
 
     chTitleA:'كل القنوات.',
     chTitleB:'في مكان واحد.',
-    chSub:'اختار منصتك — الستريم مبينامش.',
+    chSub:'اختار منصتك. الستريم مبينامش.',
     act:{ kick:'شاهد البث', tiktok:'تابع', instagram:'تابع', discord:'ادخل السيرفر', whatsapp:'انضم للقناة' },
 
     aboutTag:'مين هو',
     aboutTitle:'7amoo',
-    aboutBody:'ستريمر مصري وصانع محتوى دوام كامل. ألعاب تنافسية، لايفات طويلة، طاقة عالية، ومجتمع بيكبر كل يوم. اقعد معانا — الجو بيعلى هنا.',
+    aboutBody:'ستريمر مصري وصانع محتوى دوام كامل. ألعاب تنافسية، لايفات طويلة، طاقة عالية، ومجتمع بيكبر كل يوم. اقعد معانا، الجو بيعلى هنا.',
     tags:['FPS','عالم مفتوح','IRL','دردشة','بطولات','بدون نوم'],
     marquee:['ستريمر KICK','صانع محتوى','جيمر','مصر','بدون نوم','بث يومي'],
 
@@ -64,7 +63,6 @@ const I18N = {
     whatsappCta:'قناة الواتساب',
 
     footTagline:'نشوفكم في الستريم الجاي.',
-    craftedBy:'تصميم وتطوير',
     rights:'© 2026 7amoo · جميع الحقوق محفوظة',
     backTop:'للأعلى',
 
