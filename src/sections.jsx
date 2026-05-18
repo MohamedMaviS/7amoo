@@ -61,7 +61,12 @@ function Hero({ isLive }) {
           </a>
         </div>
       </div>
-      <div className="scrollcue"><span>{t.scroll}</span><i></i></div>
+      <a className="scrollcue" href="#channels" aria-label={t.scroll}
+         onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
+        <span className="scrollcue__lab">{t.scroll}</span>
+        <span className="scrollcue__mouse"><i></i></span>
+        <span className="scrollcue__chev"></span>
+      </a>
     </header>
   );
 }

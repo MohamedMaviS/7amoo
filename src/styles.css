@@ -172,12 +172,30 @@
 [dir="rtl"] .hero__badge{ left:auto; right:18px; }
 .hero__badge[data-live="false"]{ color:var(--dim); border-color:var(--line); }
 
-.scrollcue{ position:absolute; left:50%; bottom:26px; transform:translateX(-50%);
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-  font-size:11px; letter-spacing:.34em; color:var(--faint); font-weight:700; }
-.scrollcue i{ width:1px; height:38px; background:linear-gradient(var(--ac),transparent); animation:drop 1.8s ease-in-out infinite; }
-@keyframes drop{ 0%{ transform:scaleY(0); transform-origin:top } 45%{ transform:scaleY(1); transform-origin:top } 55%{ transform:scaleY(1); transform-origin:bottom } 100%{ transform:scaleY(0); transform-origin:bottom } }
+.scrollcue{ position:absolute; left:50%; bottom:24px;
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  font-size:11px; letter-spacing:.36em; color:var(--faint); font-weight:800; text-transform:uppercase;
+  transition:color .3s; animation:scBob 2.4s ease-in-out infinite; }
+@keyframes scBob{ 0%,100%{ transform:translate(-50%,0) } 50%{ transform:translate(-50%,7px) } }
+.scrollcue:hover{ color:var(--ac); }
+.scrollcue__lab{ animation:scLab 2.2s ease-in-out infinite; }
+@keyframes scLab{ 0%,100%{ opacity:.45 } 50%{ opacity:1 } }
+.scrollcue__mouse{ position:relative; width:26px; height:42px; border-radius:14px;
+  border:2px solid color-mix(in oklab,var(--ac) 55%,transparent);
+  box-shadow:0 0 16px color-mix(in oklab,var(--ac) 22%,transparent), inset 0 0 10px color-mix(in oklab,var(--ac) 12%,transparent);
+  transition:border-color .3s, box-shadow .3s; }
+.scrollcue:hover .scrollcue__mouse{ border-color:var(--ac); box-shadow:0 0 26px color-mix(in oklab,var(--ac) 42%,transparent); }
+.scrollcue__mouse i{ position:absolute; left:50%; top:7px; width:4px; height:8px; border-radius:3px;
+  background:var(--ac); box-shadow:0 0 9px var(--ac); transform:translateX(-50%);
+  animation:scWheel 1.7s cubic-bezier(.4,0,.2,1) infinite; }
+@keyframes scWheel{ 0%{ opacity:0; transform:translate(-50%,0) } 16%{ opacity:1 } 60%{ opacity:1 } 82%{ opacity:0; transform:translate(-50%,17px) } 100%{ opacity:0 } }
+.scrollcue__chev{ width:11px; height:11px; border-right:2px solid var(--ac); border-bottom:2px solid var(--ac);
+  transform:rotate(45deg); opacity:.85; animation:scChev 1.7s ease-in-out infinite; }
+@keyframes scChev{ 0%,100%{ transform:rotate(45deg) translate(-2px,-2px); opacity:.35 } 50%{ transform:rotate(45deg) translate(2px,2px); opacity:1 } }
 @media (max-width:920px){ .scrollcue{ display:none; } }
+@media (prefers-reduced-motion:reduce){
+  .scrollcue,.scrollcue__lab,.scrollcue__mouse i,.scrollcue__chev{ animation:none !important; }
+}
 
 /* ---------- SECTION SHELL ---------- */
 .sec{ padding:90px 0; position:relative; }
