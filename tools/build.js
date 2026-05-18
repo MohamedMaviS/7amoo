@@ -19,7 +19,8 @@ for (const f of FILES) {
       babelrc: false,
       sourceType: 'script',
       presets: [[require.resolve('@babel/preset-react'), { runtime: 'classic' }]],
-      compact: false,
+      minified: true,
+      compact: true,
       comments: false,
     });
     fs.writeFileSync(outPath, '// compiled from ' + f + ' — edit the .jsx, run tools/build.js\n' + res.code + '\n');

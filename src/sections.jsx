@@ -12,9 +12,13 @@ const CHANNELS = [
 const LOGO_FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(
   "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#eafff0'/><stop offset='.55' stop-color='#2bff88'/><stop offset='1' stop-color='#00b25a'/></linearGradient><radialGradient id='b' cx='.5' cy='.45' r='.6'><stop offset='0' stop-color='#0c2417'/><stop offset='1' stop-color='#070b08'/></radialGradient></defs><rect width='600' height='600' fill='url(#b)'/><circle cx='300' cy='300' r='210' fill='none' stroke='#2bff88' stroke-opacity='.3' stroke-width='3'/><text x='50%' y='56%' font-family='Arial Black,Impact,sans-serif' font-size='340' font-weight='900' fill='url(#g)' text-anchor='middle' dominant-baseline='middle'>7</text></svg>"
 );
-function Logo({ className, v }) {
-  return <img src={v===2 ? 'assets/logo2.jpg' : 'assets/logo.jpg'} alt="7amoo" className={className}
-    loading="eager" onError={(e)=>{ if(e.currentTarget.src.indexOf(LOGO_FALLBACK)!==0) e.currentTarget.src=LOGO_FALLBACK; }} />;
+function Logo({ className, v, lazy }) {
+  const base = v===2 ? 'assets/logo2' : 'assets/logo';
+  return <img src={base+'.webp'} alt="7amoo" className={className}
+    decoding="async" loading={lazy ? 'lazy' : 'eager'}
+    onError={(e)=>{ const s=e.currentTarget;
+      if(/\.webp$/.test(s.src)) s.src=base+'.jpg';
+      else if(s.src.indexOf('data:')!==0) s.src=LOGO_FALLBACK; }} />;
 }
 
 function SecHead({ tag, children }) {
@@ -111,7 +115,7 @@ function About() {
       <div className="app-pad about__grid">
         <div className="about__art rv rv-s" data-tilt="7">
           <span className="about__art-glow" aria-hidden="true"></span>
-          <Logo v={2}/>
+          <Logo v={2} lazy/>
         </div>
         <div className="about__copy">
           <div className="tag rv">{t.aboutTag}</div>
@@ -188,11 +192,13 @@ function Footer() {
         </div>
         <a className="credit rv" href="https://mohamedmavis.com/" target="_blank" rel="noopener noreferrer"
            style={{transitionDelay:'.14s'}} onMouseEnter={()=>window.__hover?.()} aria-label="MaviS, mohamedmavis.com">
+          <span className="credit__ring" aria-hidden="true"></span>
           <span className="credit__mk"><Icon.Bolt/></span>
-          <b>MaviS</b>
-          <i className="credit__dot"></i>
-          <small>mohamedmavis.com</small>
-          <Icon.Arrow/>
+          <span className="credit__txt">
+            <b>MaviS</b>
+            <small>mohamedmavis.com</small>
+          </span>
+          <span className="credit__go"><Icon.Arrow/></span>
         </a>
         <div className="footer__bottom">
           <span>{t.rights}</span>

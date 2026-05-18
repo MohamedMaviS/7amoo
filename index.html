@@ -54,7 +54,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/logo.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/logo.webp" type="image/webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Outfit:wght@400;500;600;700;800&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="src/styles.css">
 
@@ -174,14 +174,17 @@
         setTimeout(function(){ ld.classList.add('out');
           setTimeout(function(){ ld.parentNode&&ld.parentNode.removeChild(ld); },440); }, 150);
       }
+      var DUR=2700;
+      function ease(x){ return 1-Math.pow(1-x,2.4); }
       function frame(){
         if(done) return;
         var el=performance.now()-start;
-        // creeps smoothly to ~93% so it never looks frozen while JSX compiles,
-        // then snaps to 100% the moment React mounts.
-        var target = mounted ? 1 : Math.min(0.93, 1-Math.exp(-el/620));
-        p += (target-p)*0.14;
-        if(mounted && (1-p)<0.01) p=1;
+        var prog=Math.min(1, el/DUR);
+        var e=ease(prog);
+        // smooth ~3s fill; only completes once the time has elapsed AND React mounted
+        var target = (prog>=1 && mounted) ? 1 : Math.min(e, 0.985);
+        p += (target-p)*0.16;
+        if(target===1 && (1-p)<0.004) p=1;
         pctEl.textContent=Math.round(p*100);
         bar.style.strokeDashoffset=C*(1-p);
         if(p>=0.999){ finish(); return; }
