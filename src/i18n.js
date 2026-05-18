@@ -1,182 +1,76 @@
-// i18n strings — 7amoo
+// i18n — 7amoo (EN default, AR toggle)
 const I18N = {
   en: {
-    // nav
-    about: 'ABOUT',
-    channels: 'CHANNELS',
-    contact: 'CONTACT',
-    live: 'LIVE',
-    off: 'OFFLINE',
+    dir:'ltr',
+    navAbout:'About', navChannels:'Channels', navCommunity:'Community',
+    watchLive:'Watch Live', live:'LIVE NOW', offline:'OFFLINE',
 
-    // hero
-    roleTag: '★ GAMER · STREAMER · CONTENT CREATOR',
-    roleSub: 'GAMER · STREAMER',
-    heroDesc: 'High-energy gaming streams, non-stop content, and a community that never logs off.',
-    followAll: 'FOLLOW EVERYWHERE',
-    watchLiveBtn: 'WATCH ON KICK',
-    liveOn: 'LIVE NOW ON KICK',
-    offline: 'WATCH ON KICK',
+    heroKicker:'GAMER · STREAMER · CONTENT CREATOR',
+    heroTagline:'High-energy streams, non-stop gaming, and a community that never logs off.',
+    heroWatch:'Watch on Kick',
+    heroChannels:'All Channels',
+    scroll:'SCROLL',
 
-    // quick facts reel
-    factsLabel: 'QUICK FACTS',
-    facts: [
-      { label: 'LOCATION',  value: 'EGYPT',          ic: 'Pin' },
-      { label: 'MAIN',      value: 'KICK STREAMER',   ic: 'Kick' },
-      { label: 'CONTENT',   value: 'GAMING · IRL',    ic: 'Gamepad' },
-      { label: 'MODE',      value: 'NO SLEEP',        ic: 'Bolt' },
-      { label: 'STATUS',    value: 'STREAMING DAILY', ic: 'Live' },
-      { label: 'LANGUAGE',  value: 'AR · EN',         ic: 'Globe' },
-    ],
+    chTitleA:'EVERY CHANNEL.',
+    chTitleB:'ONE PLACE.',
+    chSub:'Pick your platform — the stream never sleeps.',
+    act:{ kick:'Watch live', tiktok:'Follow', instagram:'Follow', discord:'Join server', whatsapp:'Join channel' },
 
-    // ticker words
-    ticker: ['KICK STREAMER', 'CONTENT CREATOR', 'GAMER', 'EGYPT', 'NO SLEEP MODE'],
+    aboutTag:'WHO IS',
+    aboutTitle:'7amoo',
+    aboutBody:'Full-time Egyptian streamer and content creator. Competitive games, long live sessions, raw energy, and a squad that grows every single day. Pull up a chair — it gets loud in here.',
+    tags:['FPS','OPEN WORLD','IRL','JUST CHATTING','TOURNAMENTS','NO SLEEP'],
+    marquee:['KICK STREAMER','CONTENT CREATOR','GAMER','EGYPT','NO SLEEP MODE','LIVE DAILY'],
 
-    // about / bio
-    aboutTag: 'ABOUT ME',
-    whoIs: 'WHO IS',
-    q: '?',
-    bioLead: 'Full-time streamer and content creator. Competitive games, long live streams, and a community that grows every single day. Pull up a chair — the stream never sleeps.',
-    chips: ['FPS', 'OPEN WORLD', 'IRL', 'JUST CHATTING', 'TOURNAMENTS', 'NO SLEEP'],
-    quoteText: 'Game hard. Stream harder.',
-    quoteAccent: 'Never log off.',
-    quoteBy: '7AMOO',
-    specialtiesTag: 'SPECIALTIES',
-    specialties: [
-      { label: 'FPS BATTLES',  ic: 'Bolt'    },
-      { label: 'OPEN WORLD',   ic: 'Gamepad' },
-      { label: 'IRL / VLOGS',  ic: 'Pin'     },
-      { label: 'LONG STREAMS', ic: 'Clock'   },
-    ],
+    commTag:'THE SQUAD',
+    commTitle:'JOIN THE COMMUNITY',
+    commBody:'Hop in the Discord and follow the WhatsApp channel for live alerts, clips, and everything 7amoo.',
+    discordCta:'Join Discord',
+    whatsappCta:'WhatsApp Channel',
 
-    // streamer ID card
-    idCard: 'STREAMER ID',
-    name: 'ALIAS',
-    location: 'BASED IN',
-    role: 'MAIN PLATFORM',
-    status: 'SCHEDULE',
-    locVal: 'EGYPT',
-    roleVal: 'KICK',
-    statusVal: 'STREAMING DAILY',
-    idGames: 'TOP GAMES',
-    idGamesVal: 'FPS · OPEN WORLD · IRL',
-    idContent: 'CONTENT',
-    idContentVal: 'GAMING · IRL',
-    idLang: 'LANGUAGE',
-    idLangVal: 'AR · EN',
+    footTagline:'See you in the next stream.',
+    craftedBy:'CRAFTED BY',
+    rights:'© 2026 7amoo · All rights reserved',
+    backTop:'Back to top',
 
-    // channels
-    connectTag: 'CONNECT',
-    followEverywhere1: 'FOLLOW',
-    followEverywhere2: 'EVERYWHERE',
-    allChannels: 'All my channels in one place — pick your platform.',
-    mySocials: 'MY CHANNELS',
-
-    // contact
-    businessTag: 'COMMUNITY',
-    wantTo: 'JOIN THE',
-    collab: 'COMMUNITY',
-    collabDesc: 'Hop into the Discord and follow the WhatsApp channel for stream alerts, clips, and everything 7amoo.',
-    joinDiscord: 'JOIN DISCORD',
-    joinWhatsapp: 'WHATSAPP CHANNEL',
-
-    // footer
-    copyright: '© 2026 · 7AMOO · ALL RIGHTS RESERVED',
-    devBy: 'DESIGNED & DEVELOPED BY',
-    backTop: 'TOP',
-
-    // tweaks panel
-    tweaksTitle: 'CUSTOMIZE',
+    twTitle:'CUSTOMIZE', twLang:'LANGUAGE', twTheme:'THEME', twAccent:'ACCENT', twFx:'FX LEVEL', twSound:'HOVER SFX',
   },
-
   ar: {
-    // nav
-    about: 'عني',
-    channels: 'القنوات',
-    contact: 'المجتمع',
-    live: 'لايف',
-    off: 'أوفلاين',
+    dir:'rtl',
+    navAbout:'عني', navChannels:'القنوات', navCommunity:'المجتمع',
+    watchLive:'شاهد البث', live:'لايف دلوقتي', offline:'أوفلاين',
 
-    // hero
-    roleTag: '★ جيمر · ستريمر · صانع محتوى',
-    roleSub: 'جيمر · ستريمر',
-    heroDesc: 'لايفات جيمنج بطاقة عالية، محتوى مستمر، ومجتمع مبيهدأش.',
-    followAll: 'تابعني في كل مكان',
-    watchLiveBtn: 'تابعني على KICK',
-    liveOn: 'لايف دلوقتي على KICK',
-    offline: 'تابعني على KICK',
+    heroKicker:'جيمر · ستريمر · صانع محتوى',
+    heroTagline:'لايفات بطاقة عالية، جيمنج بلا توقف، ومجتمع مبيهدأش.',
+    heroWatch:'تابعني على Kick',
+    heroChannels:'كل القنوات',
+    scroll:'انزل',
 
-    // quick facts reel
-    factsLabel: 'حقائق سريعة',
-    facts: [
-      { label: 'المكان',   value: 'مصر',          ic: 'Pin' },
-      { label: 'الأساسية', value: 'ستريمر KICK',  ic: 'Kick' },
-      { label: 'المحتوى',  value: 'جيمنج · IRL',  ic: 'Gamepad' },
-      { label: 'الوضع',    value: 'بدون نوم',      ic: 'Bolt' },
-      { label: 'الحالة',   value: 'بث يومي',       ic: 'Live' },
-      { label: 'اللغة',    value: 'عربي · إنجليزي', ic: 'Globe' },
-    ],
+    chTitleA:'كل القنوات.',
+    chTitleB:'في مكان واحد.',
+    chSub:'اختار منصتك — الستريم مبينامش.',
+    act:{ kick:'شاهد البث', tiktok:'تابع', instagram:'تابع', discord:'ادخل السيرفر', whatsapp:'انضم للقناة' },
 
-    // ticker words
-    ticker: ['ستريمر KICK', 'صانع محتوى', 'جيمر', 'مصر', 'بدون نوم'],
+    aboutTag:'مين هو',
+    aboutTitle:'7amoo',
+    aboutBody:'ستريمر مصري وصانع محتوى دوام كامل. ألعاب تنافسية، لايفات طويلة، طاقة عالية، ومجتمع بيكبر كل يوم. اقعد معانا — الجو بيعلى هنا.',
+    tags:['FPS','عالم مفتوح','IRL','دردشة','بطولات','بدون نوم'],
+    marquee:['ستريمر KICK','صانع محتوى','جيمر','مصر','بدون نوم','بث يومي'],
 
-    // about / bio
-    aboutTag: 'عني',
-    whoIs: 'مين هو',
-    q: '؟',
-    bioLead: 'ستريمر وصانع محتوى دوام كامل. ألعاب تنافسية، لايفات طويلة، ومجتمع بيكبر كل يوم. اقعد معانا — الستريم مبينامش.',
-    chips: ['FPS', 'عالم مفتوح', 'IRL', 'دردشة', 'بطولات', 'بدون نوم'],
-    quoteText: 'العب بجد. وابث أقوى.',
-    quoteAccent: 'متنامش.',
-    quoteBy: '7AMOO',
-    specialtiesTag: 'تخصصاتي',
-    specialties: [
-      { label: 'ألعاب FPS',     ic: 'Bolt'    },
-      { label: 'عالم مفتوح',    ic: 'Gamepad' },
-      { label: 'IRL / فلوجز',   ic: 'Pin'     },
-      { label: 'لايفات طويلة',  ic: 'Clock'   },
-    ],
+    commTag:'الفريق',
+    commTitle:'انضم للمجتمع',
+    commBody:'ادخل سيرفر الديسكورد وتابع قناة الواتساب علشان توصلك تنبيهات اللايف والكليبات وكل حاجة عن 7amoo.',
+    discordCta:'ادخل الديسكورد',
+    whatsappCta:'قناة الواتساب',
 
-    // streamer ID card
-    idCard: 'بطاقة الستريمر',
-    name: 'الاسم المستعار',
-    location: 'المكان',
-    role: 'المنصة الأساسية',
-    status: 'مواعيد البث',
-    locVal: 'مصر',
-    roleVal: 'KICK',
-    statusVal: 'بث يومي',
-    idGames: 'أهم الألعاب',
-    idGamesVal: 'FPS · عالم مفتوح · IRL',
-    idContent: 'المحتوى',
-    idContentVal: 'جيمنج · IRL',
-    idLang: 'اللغة',
-    idLangVal: 'عربي · إنجليزي',
+    footTagline:'نشوفكم في الستريم الجاي.',
+    craftedBy:'تصميم وتطوير',
+    rights:'© 2026 7amoo · جميع الحقوق محفوظة',
+    backTop:'للأعلى',
 
-    // channels
-    connectTag: 'تواصل',
-    followEverywhere1: 'تابعني',
-    followEverywhere2: 'في كل مكان',
-    allChannels: 'كل قنواتي في مكان واحد — اختار المنصة اللي تناسبك.',
-    mySocials: 'قنواتي',
-
-    // contact
-    businessTag: 'المجتمع',
-    wantTo: 'انضم',
-    collab: 'للمجتمع',
-    collabDesc: 'ادخل سيرفر الديسكورد وتابع قناة الواتساب علشان توصلك تنبيهات اللايف والكليبات وكل حاجة عن 7amoo.',
-    joinDiscord: 'ادخل الديسكورد',
-    joinWhatsapp: 'قناة الواتساب',
-
-    // footer
-    copyright: '© 2026 · 7AMOO · جميع الحقوق محفوظة',
-    devBy: 'تصميم وتطوير',
-    backTop: 'للأعلى',
-
-    // tweaks panel
-    tweaksTitle: 'تخصيص',
+    twTitle:'تخصيص', twLang:'اللغة', twTheme:'الثيم', twAccent:'اللون', twFx:'المؤثرات', twSound:'صوت',
   }
 };
 window.I18N = I18N;
-
-const LangContext = React.createContext({ lang: 'en', t: I18N.en });
+const LangContext = React.createContext({ lang:'en', t:I18N.en });
 window.LangContext = LangContext;

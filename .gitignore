@@ -12,3 +12,8 @@ build/
 
 # logo master (optimized copies live in assets/)
 7amoo.logo.png
+
+.vercel
+
+# logo masters
+7logo.png
