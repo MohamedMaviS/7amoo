@@ -157,7 +157,7 @@ function Community() {
           <div className="panel rv rv-l" data-tilt="6" style={{'--pc':D.color}}>
             <span className="panel__ic"><Icon.Discord/></span>
             <h3>Discord</h3>
-            <p>{t.navAbout==='About'?'Real-time chat, stream pings, clips and giveaways with the squad.':'شات مباشر، تنبيهات اللايف، كليبات وجوايز مع الفريق.'}</p>
+            <p>{t.navAbout==='About'?'Real-time chat, stream pings, clips and giveaways with the squad.':'شات لايف، تنبيهات أول ما البث يبدأ، كليبات وجوايز مع العيلة.'}</p>
             <a className="btn btn-primary" href={D.url} target="_blank" rel="noopener noreferrer"
                style={{background:D.color,borderColor:D.color}}
                onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
@@ -167,7 +167,7 @@ function Community() {
           <div className="panel rv rv-r" data-tilt="6" style={{'--pc':W.color}}>
             <span className="panel__ic"><Icon.WhatsApp/></span>
             <h3>WhatsApp</h3>
-            <p>{t.navAbout==='About'?'Follow the official channel so you never miss a go-live.':'تابع القناة الرسمية علشان متفوتش أي لايف.'}</p>
+            <p>{t.navAbout==='About'?'Follow the official channel so you never miss a go-live.':'تابِع القناة الرسمية علشان عمرك ما تفوّت لايف.'}</p>
             <a className="btn btn-primary" href={W.url} target="_blank" rel="noopener noreferrer"
                style={{background:W.color,borderColor:W.color}}
                onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
