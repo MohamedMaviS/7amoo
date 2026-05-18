@@ -51,7 +51,8 @@
 .nav{
   position:fixed; inset:0 0 auto 0; z-index:200;
   display:flex; justify-content:center;
-  padding:20px 22px; transition:padding .3s;
+  padding:max(20px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) 20px max(22px,env(safe-area-inset-left));
+  transition:padding .3s;
 }
 .nav__bar{
   width:100%; max-width:1240px;
@@ -457,7 +458,7 @@ html.ready .rv-s:not(.in){ transform:scale(.88); }
 
 /* ============ MOBILE / SMALL SCREENS ============ */
 @media (max-width:640px){
-  .nav{ padding:14px 12px; }
+  .nav{ padding:max(14px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) 14px max(12px,env(safe-area-inset-left)); }
   .nav__bar{ padding:9px 10px 9px 12px; gap:10px; }
   .brand__wm{ font-size:21px; }
   .brand__mk{ width:38px; height:38px; border-radius:11px; }
@@ -495,3 +496,35 @@ html.ready .rv-s:not(.in){ transform:scale(.88); }
   .credit small{ display:none; }
 }
 html{ overflow-x:hidden; }
+body{ overflow-x:hidden; }
+
+/* ===== MOBILE EDGES / CORNERS / SAFE-AREA ===== */
+@media (max-width:760px){
+  /* Big decorative rings overflow small screens and get clipped into
+     broken-looking arcs — drop them on mobile (glows stay, they fade softly). */
+  .hero__ring{ display:none; }
+  .about__art::before{ display:none; }
+  /* keep round art clear of the screen edges */
+  .hero__art{ width:min(320px,80%); }
+  .about__art{ width:min(300px,78%); }
+  .hero__art-glow,.about__art-glow{ inset:-6%; }
+  /* nothing should poke past the rounded device corners */
+  .hero,.sec,.footer,.mq{ overflow-x:clip; }
+}
+/* Respect notch / rounded-display safe areas (viewport-fit=cover is set) */
+.app-pad{
+  padding-left:max(28px,env(safe-area-inset-left));
+  padding-right:max(28px,env(safe-area-inset-right));
+}
+@media (max-width:640px){
+  .app-pad{
+    padding-left:max(18px,env(safe-area-inset-left));
+    padding-right:max(18px,env(safe-area-inset-right));
+  }
+}
+@media (max-width:380px){
+  .app-pad{
+    padding-left:max(14px,env(safe-area-inset-left));
+    padding-right:max(14px,env(safe-area-inset-right));
+  }
+}
