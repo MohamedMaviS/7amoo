@@ -108,9 +108,13 @@ function Nav({
     className: "nav__bar"
   }, React.createElement("a", {
     className: "brand",
-    href: "#top",
+    href: `https://kick.com/${KICK_USER}`,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    "data-kpv": true,
     onMouseEnter: () => window.__hover?.(),
-    "aria-label": "7amoo"
+    onClick: () => window.__click?.(),
+    "aria-label": "7amoo on Kick"
   }, React.createElement("span", {
     className: "brand__mk"
   }, React.createElement(Logo, null)), React.createElement("span", {

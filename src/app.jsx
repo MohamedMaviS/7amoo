@@ -56,7 +56,8 @@ function Nav({ isLive, lang, setLang, onCustomize }){
   return (
     <nav className={`nav ${sc?'scrolled':''}`}>
       <div className="nav__bar">
-        <a className="brand" href="#top" onMouseEnter={()=>window.__hover?.()} aria-label="7amoo">
+        <a className="brand" href={`https://kick.com/${KICK_USER}`} target="_blank" rel="noopener noreferrer"
+           data-kpv onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()} aria-label="7amoo on Kick">
           <span className="brand__mk"><Logo/></span>
           <span className="brand__wm">7amoo</span>
         </a>
