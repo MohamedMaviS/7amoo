@@ -413,7 +413,7 @@ html.ready .rv-s:not(.in){ transform:scale(.88); }
 .btn-primary:hover::after{ left:130%; }
 .btn span,.btn svg{ position:relative; z-index:1; }
 .livepill{ white-space:nowrap; }
-.row__name,.about__title,.hero__name{ word-break:break-word; }
+.hero__name,.about__title{ white-space:nowrap; }
 
 /* ============ MOBILE / SMALL SCREENS ============ */
 @media (max-width:640px){
