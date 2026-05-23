@@ -13,7 +13,7 @@ const LOGO_FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(
   "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#eafff0'/><stop offset='.55' stop-color='#2bff88'/><stop offset='1' stop-color='#00b25a'/></linearGradient><radialGradient id='b' cx='.5' cy='.45' r='.6'><stop offset='0' stop-color='#0c2417'/><stop offset='1' stop-color='#070b08'/></radialGradient></defs><rect width='600' height='600' fill='url(#b)'/><circle cx='300' cy='300' r='210' fill='none' stroke='#2bff88' stroke-opacity='.3' stroke-width='3'/><text x='50%' y='56%' font-family='Arial Black,Impact,sans-serif' font-size='340' font-weight='900' fill='url(#g)' text-anchor='middle' dominant-baseline='middle'>7</text></svg>"
 );
 function Logo({ className, v, lazy }) {
-  const base = v===2 ? 'assets/logo2' : 'assets/logo';
+  const base = v===3 ? 'assets/squad' : v===2 ? 'assets/logo2' : 'assets/logo';
   return <img src={base+'.webp'} alt="7amoo" className={className}
     decoding="async" loading={lazy ? 'lazy' : 'eager'}
     onError={(e)=>{ const s=e.currentTarget;
@@ -55,7 +55,7 @@ function Hero({ isLive }) {
         <div className="hero__art rv rv-s" style={{transitionDelay:'.15s'}} data-tilt="9">
           <span className="hero__ring" aria-hidden="true"></span>
           <span className="hero__art-glow" aria-hidden="true"></span>
-          <div className="hero__frame"><Logo/></div>
+          <div className="hero__frame"><Logo v={3}/></div>
           <a className="hero__badge" data-live={isLive} href={`https://kick.com/${KICK_USER}`} target="_blank" rel="noopener noreferrer" data-kpv onMouseEnter={()=>window.__hover?.()}>
             <span className="dot"></span><span>{isLive ? t.live : t.offline}</span>
           </a>
