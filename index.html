@@ -97,40 +97,10 @@
   [data-fx="low"] #fx{display:none}
   [data-fx="low"] .grain::after{display:none}
   @keyframes spin{to{transform:rotate(360deg)}}
-  /* loader */
-  #ld{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:var(--bg);
-    transition:opacity .42s ease,filter .42s ease}
-  #ld.out{opacity:0;filter:blur(14px);pointer-events:none}
-  #ld .ld__box{display:flex;flex-direction:column;align-items:center;gap:22px}
-  #ld .ld__wm{font-family:var(--f-disp);font-size:clamp(30px,7vw,52px);line-height:1;letter-spacing:.01em;
-    background:linear-gradient(180deg,var(--text),color-mix(in oklab,var(--ac) 75%,var(--text)));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    filter:drop-shadow(0 0 22px color-mix(in oklab,var(--ac) 30%,transparent))}
-  #ld .ld__ring{position:relative;width:104px;height:104px}
-  #ld .ld__ring svg{width:100%;height:100%;transform:rotate(-90deg);display:block;overflow:visible}
-  #ld .ld__trk{fill:none;stroke:var(--line);stroke-width:5}
-  #ld .ld__bar{fill:none;stroke:var(--ac);stroke-width:5;stroke-linecap:round;
-    filter:drop-shadow(0 0 6px color-mix(in oklab,var(--ac) 60%,transparent))}
-  #ld .ld__pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    font-family:var(--f-body);font-weight:800;font-size:23px;color:var(--text);font-variant-numeric:tabular-nums}
-  #ld .ld__pct i{font-style:normal;font-size:13px;color:var(--ac);margin-left:1px}
-  #ld .ld__lab{font-family:var(--f-body);font-weight:800;font-size:11px;letter-spacing:.42em;
-    color:var(--faint);text-transform:uppercase;animation:ldlab 1.3s ease-in-out infinite}
-  @keyframes ldlab{0%,100%{opacity:.45}50%{opacity:1}}
 </style>
 </head>
 <body class="grain">
   <div id="top"></div>
-  <div id="ld">
-    <div class="ld__box">
-      <div class="ld__wm">7amoo</div>
-      <div class="ld__ring">
-        <svg viewBox="0 0 104 104"><circle class="ld__trk" cx="52" cy="52" r="46"/><circle class="ld__bar" cx="52" cy="52" r="46"/></svg>
-        <div class="ld__pct"><span id="ldp">0</span><i>%</i></div>
-      </div>
-      <div class="ld__lab">Loading</div>
-    </div>
-  </div>
   <canvas id="fx"></canvas>
   <div id="app"></div>
 
@@ -160,45 +130,6 @@
   <script type="module">
     import { injectSpeedInsights } from 'https://cdn.jsdelivr.net/npm/@vercel/speed-insights@2.0.0/dist/index.mjs';
     injectSpeedInsights();
-  </script>
-
-  <script>
-    (function(){
-      var ld=document.getElementById('ld'), pctEl=document.getElementById('ldp'),
-          bar=ld.querySelector('.ld__bar'), C=2*Math.PI*46,
-          start=performance.now(), mounted=false, done=false, p=0;
-      bar.style.strokeDasharray=C; bar.style.strokeDashoffset=C;
-      function finish(){
-        if(done) return; done=true;
-        pctEl.textContent=100; bar.style.strokeDashoffset=0;
-        setTimeout(function(){ ld.classList.add('out');
-          setTimeout(function(){ ld.parentNode&&ld.parentNode.removeChild(ld); },440); }, 150);
-      }
-      var DUR=2700;
-      function ease(x){ return 1-Math.pow(1-x,2.4); }
-      function frame(){
-        if(done) return;
-        var el=performance.now()-start;
-        var prog=Math.min(1, el/DUR);
-        var e=ease(prog);
-        // smooth ~3s fill; only completes once the time has elapsed AND React mounted
-        var target = (prog>=1 && mounted) ? 1 : Math.min(e, 0.985);
-        p += (target-p)*0.16;
-        if(target===1 && (1-p)<0.004) p=1;
-        pctEl.textContent=Math.round(p*100);
-        bar.style.strokeDashoffset=C*(1-p);
-        if(p>=0.999){ finish(); return; }
-        requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-      var mo=new MutationObserver(function(){
-        var a=document.getElementById('app');
-        if(a&&a.children.length){ mo.disconnect(); mounted=true; }
-      });
-      mo.observe(document.getElementById('app'),{childList:true});
-      // last-resort safety so it can never hang forever
-      setTimeout(function(){ mounted=true; },8000);
-    })();
   </script>
 </body>
 </html>
