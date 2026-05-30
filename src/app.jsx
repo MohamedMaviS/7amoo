@@ -45,6 +45,7 @@ function App(){
       <Footer/>
       <TweaksPanel tw={tw} set={set} open={panel} onClose={()=>setPanel(false)}/>
       <KickPreview/>
+      <Player/>
     </LangContext.Provider>
   );
 }

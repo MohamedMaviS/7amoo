@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SRC = path.join(__dirname, '..', 'src');
-const FILES = ['icons.jsx', 'sections.jsx', 'tweaks.jsx', 'app.jsx'];
+const FILES = ['icons.jsx', 'sections.jsx', 'tweaks.jsx', 'player.jsx', 'app.jsx'];
 
 let ok = true;
 for (const f of FILES) {
