@@ -179,6 +179,7 @@ function Player() {
           </button>
           <input
             className="player__vol"
+            style={{ '--p': `${muted ? 0 : Math.round(vol * 100)}%` }}
             type="range" min="0" max="1" step="0.05"
             value={muted ? 0 : vol}
             onChange={onVol}
