@@ -1,26 +1,28 @@
 // ============================================================
-// /api/live — live-status endpoint (Vercel Edge Function)
+// /api/live — live-status + stream details (Vercel edge fn)
 // ------------------------------------------------------------
-// Browser CORS rules block the site from hitting kick.com /
-// tiktok.com directly, so we check here server-side from
-// Vercel's IP — no CORS, no quota, no middleman.
+// Server-side proxy to Kick/TikTok (CORS-blocked from the browser).
+// Returns the live state plus, when on Kick, the title, viewer
+// count, and game/category so the front-end can render a rich card.
 //
-// Response shape:
-//   { isLive: boolean, platform: 'kick' | 'tiktok',
-//     debug:  { kick: true|false|null, tiktok: true|false|null } }
-//
-// null means "could not determine" — the client keeps its
-// previous state so a transient upstream blip doesn't flip OFF.
+// Shape:
+//   {
+//     isLive: boolean,
+//     platform: 'kick' | 'tiktok',
+//     title:   string | null,      // current stream title
+//     viewers: number | null,      // current viewer count
+//     game:    string | null,      // category / game name
+//     started: string | null,      // ISO time the stream went live
+//     debug:   { kick: bool|null, tiktok: bool|null }
+//   }
 // ============================================================
 
 export const config = { runtime: 'edge' };
 
 const KICK_USER = '7amoo_69';
 const TIKTOK_USER = 'hamo_eldiesel';
-
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
 
-// --- Kick: clean JSON API. `livestream` is an object while live, null while offline.
 async function checkKick() {
   try {
     const r = await fetch(`https://kick.com/api/v2/channels/${KICK_USER}`, {
@@ -34,17 +36,22 @@ async function checkKick() {
     });
     if (!r.ok) return null;
     const d = await r.json();
-    if (d && d.livestream) {
-      if (typeof d.livestream.is_live === 'boolean') return d.livestream.is_live;
-      return true;
-    }
-    return false;
+    if (!d || !d.livestream) return { live: false };
+    const ls = d.livestream;
+    const isLive = (typeof ls.is_live === 'boolean') ? ls.is_live : true;
+    if (!isLive) return { live: false };
+    return {
+      live: true,
+      title: typeof ls.session_title === 'string' ? ls.session_title.trim() : null,
+      viewers: typeof ls.viewer_count === 'number' ? ls.viewer_count : null,
+      game: (ls.categories && ls.categories[0] && typeof ls.categories[0].name === 'string') ? ls.categories[0].name : null,
+      started: ls.created_at || ls.start_time || null,
+    };
   } catch {
     return null;
   }
 }
 
-// --- TikTok: no public API. Scrape the /live page for live-only markers.
 async function checkTikTok() {
   try {
     const r = await fetch(`https://www.tiktok.com/@${TIKTOK_USER}/live`, {
@@ -71,10 +78,19 @@ export default async function handler() {
 
   let isLive = false;
   let platform = 'kick';
-  if (kick === true)        { isLive = true; platform = 'kick';   }
-  else if (tiktok === true) { isLive = true; platform = 'tiktok'; }
+  let title = null, viewers = null, game = null, started = null;
 
-  return new Response(JSON.stringify({ isLive, platform, debug: { kick, tiktok } }), {
+  if (kick && kick.live === true) {
+    isLive = true; platform = 'kick';
+    title = kick.title; viewers = kick.viewers; game = kick.game; started = kick.started;
+  } else if (tiktok === true) {
+    isLive = true; platform = 'tiktok';
+  }
+
+  return new Response(JSON.stringify({
+    isLive, platform, title, viewers, game, started,
+    debug: { kick: kick ? (kick.live === true) : null, tiktok }
+  }), {
     status: 200,
     headers: {
       'content-type': 'application/json; charset=utf-8',

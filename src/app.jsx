@@ -9,8 +9,25 @@ function App(){
   const [tw,setTw]=useState(window.TWEAKS_DEFAULT);
   const [panel,setPanel]=useState(false);
   const [isLive,setLive]=useState(false);
+  const [liveData,setLiveData]=useState({isLive:false,title:null,viewers:null,game:null});
 
   const set=(k,v)=>setTw(p=>({...p,[k]:v}));
+
+  const refreshLive=React.useCallback(async()=>{
+    try{
+      const r=await fetch('/api/live',{cache:'no-store'});
+      if(!r.ok) return;
+      const d=await r.json();
+      const next={
+        isLive: d.isLive===true,
+        title: d.title||null,
+        viewers: typeof d.viewers==='number' ? d.viewers : null,
+        game: d.game||null,
+      };
+      setLiveData(next);
+      setLive(next.isLive);
+    }catch(_){}
+  },[]);
 
   useEffect(()=>{
     const r=document.documentElement;
@@ -28,24 +45,28 @@ function App(){
 
   useEffect(()=>{
     let dead=false;
-    const ping=async()=>{ try{ const r=await fetch('/api/live',{cache:'no-store'}); if(!r.ok)return; const d=await r.json(); if(!dead && typeof d.isLive==='boolean') setLive(d.isLive);}catch(_){} };
-    ping(); const id=setInterval(ping,60000); return ()=>{dead=true;clearInterval(id);};
-  },[]);
+    refreshLive();
+    const id=setInterval(()=>{ if(!dead) refreshLive(); },55000);
+    return ()=>{ dead=true; clearInterval(id); };
+  },[refreshLive]);
 
   useEffect(()=>{ setTimeout(()=>window.__reveal?.(),80); },[tw.lang]);
 
   const t=I18N[tw.lang]||I18N.en;
   return (
     <LangContext.Provider value={{lang:tw.lang,t}}>
-      <Nav isLive={isLive} lang={tw.lang} setLang={v=>set('lang',v)} onCustomize={()=>setPanel(o=>!o)}/>
-      <Hero isLive={isLive}/>
-      <Channels isLive={isLive}/>
-      <About/>
-      <Community/>
-      <Footer/>
-      <TweaksPanel tw={tw} set={set} open={panel} onClose={()=>setPanel(false)}/>
-      <KickPreview/>
-      <Player/>
+      <LiveContext.Provider value={{...liveData, refresh:refreshLive}}>
+        <Nav isLive={isLive} lang={tw.lang} setLang={v=>set('lang',v)} onCustomize={()=>setPanel(o=>!o)}/>
+        <Hero isLive={isLive}/>
+        <LiveStatus/>
+        <Channels isLive={isLive}/>
+        <About/>
+        <Community/>
+        <Footer/>
+        <TweaksPanel tw={tw} set={set} open={panel} onClose={()=>setPanel(false)}/>
+        <KickPreview/>
+        <Player/>
+      </LiveContext.Provider>
     </LangContext.Provider>
   );
 }

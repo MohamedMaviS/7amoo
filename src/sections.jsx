@@ -214,4 +214,68 @@ function Footer() {
   );
 }
 
-Object.assign(window, { Logo, Hero, Channels, About, Community, Footer });
+/* ---------------- LIVE NOW CARD ---------------- */
+function LiveStatus() {
+  const { t, lang } = useContext(LangContext);
+  const live = React.useContext(LiveContext);
+  const { isLive, title, viewers, game, refresh } = live || {};
+  const fmtNum = (n) => (typeof n === 'number' ? n.toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US') : '0');
+  const Eye = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>);
+  const Refresh = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.36L21 8"/><polyline points="21 3 21 8 16 8"/><path d="M21 12a9 9 0 0 1-15.5 6.36L3 16"/><polyline points="3 21 3 16 8 16"/></svg>);
+
+  return (
+    <section className={`livenow ${isLive ? 'is-live' : 'is-off'}`} id="live">
+      <div className="app-pad">
+        <div className="livenow__card rv">
+          <span className="livenow__bg" aria-hidden="true"></span>
+
+          <div className="livenow__top">
+            <span className="livenow__badge">
+              <span className="livenow__dot"></span>
+              <span>{isLive ? t.liveNow : t.offlineNow}</span>
+            </span>
+            <a className="livenow__handle mono" href="https://kick.com/7amoo_69" target="_blank" rel="noopener noreferrer" data-kpv onMouseEnter={()=>window.__hover?.()}>kick.com/7amoo_69</a>
+          </div>
+
+          {isLive ? (
+            <>
+              <h3 className="livenow__title" dir="auto">{title || t.titleFallback}</h3>
+              <div className="livenow__pills">
+                <span className="livenow__pill">
+                  <Eye/>
+                  <b>{fmtNum(viewers || 0)}</b>
+                  <span>{t.viewersLbl}</span>
+                </span>
+                <span className="livenow__pill">
+                  <Icon.Gamepad/>
+                  <span>{game || t.categoryFallback}</span>
+                </span>
+              </div>
+              <a className="livenow__cta btn btn-primary" href="https://kick.com/7amoo_69" target="_blank" rel="noopener noreferrer"
+                 data-kpv onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
+                <Icon.Kick/><span>{t.watchKick}</span>
+              </a>
+            </>
+          ) : (
+            <>
+              <p className="livenow__msg">{t.offlineMsg}</p>
+              <a className="livenow__cta btn btn-ghost" href="https://kick.com/7amoo_69" target="_blank" rel="noopener noreferrer"
+                 onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
+                <Icon.Kick/><span>{t.followKick}</span>
+              </a>
+            </>
+          )}
+
+          <div className="livenow__foot mono">
+            <span>{t.autoRefresh}</span>
+            <button type="button" className="livenow__refresh" onClick={() => { refresh && refresh(); window.__click?.(); }} onMouseEnter={()=>window.__hover?.()}>
+              <Refresh/><span>{t.refreshNow}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { Logo, Hero, Channels, About, Community, Footer, LiveStatus });

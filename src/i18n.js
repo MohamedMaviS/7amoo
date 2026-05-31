@@ -33,6 +33,13 @@ const I18N = {
     backTop:'Back to top',
 
     twTitle:'CUSTOMIZE', twLang:'LANGUAGE', twTheme:'THEME', twAccent:'ACCENT', twFx:'FX LEVEL', twSound:'HOVER SFX',
+
+    liveNow:'LIVE NOW', offlineNow:'OFFLINE',
+    viewersLbl:'viewers',
+    watchKick:'Watch on Kick', followKick:'Follow on Kick',
+    offlineMsg:'Not streaming right now. Follow on Kick to get notified the moment 7amoo goes live.',
+    autoRefresh:'Auto-refresh every 55s', refreshNow:'Refresh now',
+    titleFallback:'Live on Kick', categoryFallback:'Streaming',
   },
   ar: {
     dir:'rtl',
@@ -67,8 +74,17 @@ const I18N = {
     backTop:'ارجع فوق',
 
     twTitle:'تخصيص', twLang:'اللغة', twTheme:'الثيم', twAccent:'اللون', twFx:'المؤثرات', twSound:'الصوت',
+
+    liveNow:'لايف دلوقتي', offlineNow:'مش لايف',
+    viewersLbl:'مشاهد',
+    watchKick:'شوف اللايف', followKick:'تابعه على Kick',
+    offlineMsg:'مش بيبث دلوقتي. تابعه على Kick علشان يجيلك إشعار أول ما يفتح لايف.',
+    autoRefresh:'بيتحدث كل ٥٥ ثانية', refreshNow:'حدّث دلوقتي',
+    titleFallback:'لايف على Kick', categoryFallback:'بيبث',
   }
 };
 window.I18N = I18N;
 const LangContext = React.createContext({ lang:'en', t:I18N.en });
 window.LangContext = LangContext;
+const LiveContext = React.createContext({ isLive:false, title:null, viewers:null, game:null, refresh:()=>{} });
+window.LiveContext = LiveContext;
