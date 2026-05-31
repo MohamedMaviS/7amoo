@@ -36,10 +36,11 @@ const I18N = {
 
     liveNow:'LIVE NOW', offlineNow:'OFFLINE',
     viewersLbl:'viewers',
-    watchKick:'Watch on Kick', followKick:'Follow on Kick',
+    watchKick:'Watch on Kick', watchTiktok:'Watch on TikTok',
+    followKick:'Follow on Kick',
     offlineMsg:'Not streaming right now. Follow on Kick to get notified the moment 7amoo goes live.',
     autoRefresh:'Auto-refresh every 55s', refreshNow:'Refresh now',
-    titleFallback:'Live on Kick', categoryFallback:'Streaming',
+    titleFallback:'Live on Kick', titleFallbackTk:'Live on TikTok', categoryFallback:'Streaming',
   },
   ar: {
     dir:'rtl',
@@ -77,10 +78,11 @@ const I18N = {
 
     liveNow:'لايف دلوقتي', offlineNow:'مش لايف',
     viewersLbl:'مشاهد',
-    watchKick:'شوف اللايف', followKick:'تابعه على Kick',
+    watchKick:'شوف اللايف على Kick', watchTiktok:'شوف اللايف على TikTok',
+    followKick:'تابعه على Kick',
     offlineMsg:'مش بيبث دلوقتي. تابعه على Kick علشان يجيلك إشعار أول ما يفتح لايف.',
     autoRefresh:'بيتحدث كل ٥٥ ثانية', refreshNow:'حدّث دلوقتي',
-    titleFallback:'لايف على Kick', categoryFallback:'بيبث',
+    titleFallback:'لايف على Kick', titleFallbackTk:'لايف على TikTok', categoryFallback:'بيبث',
   }
 };
 window.I18N = I18N;

@@ -9,7 +9,7 @@ function App(){
   const [tw,setTw]=useState(window.TWEAKS_DEFAULT);
   const [panel,setPanel]=useState(false);
   const [isLive,setLive]=useState(false);
-  const [liveData,setLiveData]=useState({isLive:false,title:null,viewers:null,game:null});
+  const [liveData,setLiveData]=useState({isLive:false,platform:'kick',title:null,viewers:null,game:null});
 
   const set=(k,v)=>setTw(p=>({...p,[k]:v}));
 
@@ -20,6 +20,7 @@ function App(){
       const d=await r.json();
       const next={
         isLive: d.isLive===true,
+        platform: d.platform||'kick',
         title: d.title||null,
         viewers: typeof d.viewers==='number' ? d.viewers : null,
         game: d.game||null,
