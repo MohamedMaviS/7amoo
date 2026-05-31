@@ -545,9 +545,17 @@ body{ overflow-x:hidden; }
 .livenow__title{
   position:relative; z-index:1;
   font-family:var(--f-head); font-weight:800; font-size:clamp(22px,3.2vw,34px); line-height:1.2;
-  color:var(--text); margin:4px 0 16px; word-break:break-word;
+  color:var(--text); margin:4px 0 14px; word-break:break-word;
   text-shadow:0 0 24px color-mix(in oklab,var(--ac) 20%,transparent);
 }
+.livenow__embed{
+  position:relative; z-index:1; width:100%; aspect-ratio:16/9;
+  margin:0 0 16px; border-radius:14px; overflow:hidden;
+  background:#000;
+  border:1px solid color-mix(in oklab,var(--ac) 38%,transparent);
+  box-shadow:0 14px 38px rgba(0,0,0,.55), 0 0 28px var(--ac-soft);
+}
+.livenow__embed iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
 .livenow__pills{ position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
 .livenow__pill{
   display:inline-flex; align-items:center; gap:9px; padding:9px 14px; border-radius:999px;
@@ -580,12 +588,23 @@ body{ overflow-x:hidden; }
 .livenow__refresh:hover{ border-color:var(--ac); color:var(--ac); background:color-mix(in oklab,var(--ac) 10%,transparent); }
 .livenow__refresh svg{ width:13px; height:13px; transition:transform .55s; }
 .livenow__refresh:hover svg{ transform:rotate(180deg); }
+.livenow__refresh.is-loading svg{ animation:spin 1s linear infinite; transition:none; }
+.livenow.is-loading .livenow__dot{ animation:beat .8s ease-in-out infinite; }
 
 @media (max-width:640px){
   .livenow__card{ padding:18px 16px 14px; border-radius:20px; }
   .livenow__title{ font-size:clamp(18px,5.5vw,24px); margin-bottom:12px; }
+  .livenow__embed{ border-radius:12px; margin-bottom:14px; }
   .livenow__pill{ font-size:12.5px; padding:8px 12px; }
+  .livenow__cta{ width:100%; justify-content:center; }
   .livenow__foot{ font-size:9.5px; letter-spacing:.18em; }
+  .livenow__handle{ font-size:10.5px; }
+}
+@media (max-width:380px){
+  .livenow__card{ padding:16px 14px 12px; border-radius:18px; }
+  .livenow__title{ font-size:clamp(17px,5.6vw,20px); }
+  .livenow__pills{ gap:6px; }
+  .livenow__pill{ padding:7px 10px; font-size:11.5px; gap:7px; }
 }
 
 /* ===== MUSIC PLAYER (fixed bottom-left) ===== */

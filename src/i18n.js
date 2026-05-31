@@ -34,12 +34,12 @@ const I18N = {
 
     twTitle:'CUSTOMIZE', twLang:'LANGUAGE', twTheme:'THEME', twAccent:'ACCENT', twFx:'FX LEVEL', twSound:'HOVER SFX',
 
-    liveNow:'LIVE NOW', offlineNow:'OFFLINE',
+    liveNow:'LIVE NOW', offlineNow:'CURRENTLY OFFLINE',
     viewersLbl:'viewers',
     watchKick:'Watch on Kick', watchTiktok:'Watch on TikTok',
     followKick:'Follow on Kick',
-    offlineMsg:'Not streaming right now. Follow on Kick to get notified the moment 7amoo goes live.',
-    autoRefresh:'Auto-refresh every 55s', refreshNow:'Refresh now',
+    offlineMsg:"7amoo isn't live right now. Follow him on Kick and the moment he goes live, this page lights up.",
+    autoRefresh:'Auto-syncing every 55s', syncing:'Syncing…', refreshNow:'Refresh now',
     titleFallback:'Live on Kick', titleFallbackTk:'Live on TikTok', categoryFallback:'Streaming',
   },
   ar: {
@@ -76,12 +76,12 @@ const I18N = {
 
     twTitle:'تخصيص', twLang:'اللغة', twTheme:'الثيم', twAccent:'اللون', twFx:'المؤثرات', twSound:'الصوت',
 
-    liveNow:'لايف دلوقتي', offlineNow:'مش لايف',
+    liveNow:'لايف دلوقتي', offlineNow:'قافل حالياً',
     viewersLbl:'مشاهد',
     watchKick:'شوف اللايف على Kick', watchTiktok:'شوف اللايف على TikTok',
     followKick:'تابعه على Kick',
-    offlineMsg:'مش بيبث دلوقتي. تابعه على Kick علشان يجيلك إشعار أول ما يفتح لايف.',
-    autoRefresh:'بيتحدث كل ٥٥ ثانية', refreshNow:'حدّث دلوقتي',
+    offlineMsg:'حمو مش لايف دلوقتي. تابعه على Kick، وأول ما يفتح لايف الصفحة دي هتولّع على طول.',
+    autoRefresh:'بيتحدث كل ٥٥ ثانية', syncing:'بيحدّث…', refreshNow:'حدّث دلوقتي',
     titleFallback:'لايف على Kick', titleFallbackTk:'لايف على TikTok', categoryFallback:'بيبث',
   }
 };

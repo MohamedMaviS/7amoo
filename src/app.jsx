@@ -10,24 +10,30 @@ function App(){
   const [panel,setPanel]=useState(false);
   const [isLive,setLive]=useState(false);
   const [liveData,setLiveData]=useState({isLive:false,platform:'kick',title:null,viewers:null,game:null});
+  const [liveLoading,setLiveLoading]=useState(true);
 
   const set=(k,v)=>setTw(p=>({...p,[k]:v}));
 
   const refreshLive=React.useCallback(async()=>{
+    setLiveLoading(true);
     try{
       const r=await fetch('/api/live',{cache:'no-store'});
       if(!r.ok) return;
       const d=await r.json();
+      // "live" everywhere in this app means KICK is live. TikTok status from
+      // /api/live is ignored on purpose — the brand focuses on Kick.
+      const kickLive = d.platform === 'kick' && d.isLive === true;
       const next={
-        isLive: d.isLive===true,
-        platform: d.platform||'kick',
-        title: d.title||null,
-        viewers: typeof d.viewers==='number' ? d.viewers : null,
-        game: d.game||null,
+        isLive: kickLive,
+        platform: 'kick',
+        title: kickLive ? (d.title || null) : null,
+        viewers: kickLive && typeof d.viewers==='number' ? d.viewers : null,
+        game: kickLive ? (d.game || null) : null,
       };
       setLiveData(next);
-      setLive(next.isLive);
+      setLive(kickLive);
     }catch(_){}
+    finally{ setLiveLoading(false); }
   },[]);
 
   useEffect(()=>{
@@ -56,7 +62,7 @@ function App(){
   const t=I18N[tw.lang]||I18N.en;
   return (
     <LangContext.Provider value={{lang:tw.lang,t}}>
-      <LiveContext.Provider value={{...liveData, refresh:refreshLive}}>
+      <LiveContext.Provider value={{...liveData, loading:liveLoading, refresh:refreshLive}}>
         <Nav isLive={isLive} lang={tw.lang} setLang={v=>set('lang',v)} onCustomize={()=>setPanel(o=>!o)}/>
         <Hero isLive={isLive}/>
         <LiveStatus/>

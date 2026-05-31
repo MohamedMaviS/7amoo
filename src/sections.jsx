@@ -218,19 +218,15 @@ function Footer() {
 function LiveStatus() {
   const { t, lang } = useContext(LangContext);
   const live = React.useContext(LiveContext);
-  const { isLive, platform, title, viewers, game, refresh } = live || {};
-  const isTk = platform === 'tiktok';
-  const liveUrl = isTk ? 'https://www.tiktok.com/@hamo_eldiesel/live' : 'https://kick.com/7amoo_69';
-  const handle  = isTk ? 'tiktok.com/@hamo_eldiesel' : 'kick.com/7amoo_69';
-  const watchText  = isTk ? t.watchTiktok : t.watchKick;
-  const fallback   = isTk ? t.titleFallbackTk : t.titleFallback;
-  const PlatIcon = isTk ? Icon.TikTok : Icon.Kick;
+  const { isLive, title, viewers, game, refresh, loading } = live || {};
+  const KICK_URL = 'https://kick.com/7amoo_69';
+  const HANDLE = 'kick.com/7amoo_69';
   const fmtNum = (n) => (typeof n === 'number' ? n.toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US') : '0');
   const Eye = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>);
   const Refresh = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.36L21 8"/><polyline points="21 3 21 8 16 8"/><path d="M21 12a9 9 0 0 1-15.5 6.36L3 16"/><polyline points="3 21 3 16 8 16"/></svg>);
 
   return (
-    <section className={`livenow ${isLive ? 'is-live' : 'is-off'} ${isLive && isTk ? 'is-tk' : ''}`} id="live">
+    <section className={`livenow ${isLive ? 'is-live' : 'is-off'} ${loading ? 'is-loading' : ''}`} id="live">
       <div className="app-pad">
         <div className="livenow__card rv">
           <span className="livenow__bg" aria-hidden="true"></span>
@@ -240,46 +236,55 @@ function LiveStatus() {
               <span className="livenow__dot"></span>
               <span>{isLive ? t.liveNow : t.offlineNow}</span>
             </span>
-            <a className="livenow__handle mono" href={liveUrl} target="_blank" rel="noopener noreferrer"
-               {...(!isTk ? { 'data-kpv': '' } : {})}
-               onMouseEnter={()=>window.__hover?.()}>{handle}</a>
+            <a className="livenow__handle mono" href={KICK_URL} target="_blank" rel="noopener noreferrer"
+               data-kpv onMouseEnter={()=>window.__hover?.()}>{HANDLE}</a>
           </div>
 
           {isLive ? (
             <>
-              <h3 className="livenow__title" dir="auto">{title || fallback}</h3>
-              {!isTk && (
-                <div className="livenow__pills">
-                  <span className="livenow__pill">
-                    <Eye/>
-                    <b>{fmtNum(viewers || 0)}</b>
-                    <span>{t.viewersLbl}</span>
-                  </span>
-                  <span className="livenow__pill">
-                    <Icon.Gamepad/>
-                    <span>{game || t.categoryFallback}</span>
-                  </span>
-                </div>
-              )}
-              <a className="livenow__cta btn btn-primary" href={liveUrl} target="_blank" rel="noopener noreferrer"
-                 {...(!isTk ? { 'data-kpv': '' } : {})}
-                 onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
-                <PlatIcon/><span>{watchText}</span>
+              <h3 className="livenow__title" dir="auto">{title || t.titleFallback}</h3>
+
+              <div className="livenow__embed">
+                <iframe
+                  src={`https://player.kick.com/7amoo_69?autoplay=true&muted=true`}
+                  title="7amoo live on Kick"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="livenow__pills">
+                <span className="livenow__pill">
+                  <Eye/>
+                  <b>{fmtNum(viewers || 0)}</b>
+                  <span>{t.viewersLbl}</span>
+                </span>
+                <span className="livenow__pill">
+                  <Icon.Gamepad/>
+                  <span>{game || t.categoryFallback}</span>
+                </span>
+              </div>
+
+              <a className="livenow__cta btn btn-primary" href={KICK_URL} target="_blank" rel="noopener noreferrer"
+                 data-kpv onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
+                <Icon.Kick/><span>{t.watchKick}</span>
               </a>
             </>
           ) : (
             <>
               <p className="livenow__msg">{t.offlineMsg}</p>
-              <a className="livenow__cta btn btn-ghost" href="https://kick.com/7amoo_69" target="_blank" rel="noopener noreferrer"
-                 onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
+              <a className="livenow__cta btn btn-ghost" href={KICK_URL} target="_blank" rel="noopener noreferrer"
+                 data-kpv onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
                 <Icon.Kick/><span>{t.followKick}</span>
               </a>
             </>
           )}
 
           <div className="livenow__foot mono">
-            <span>{t.autoRefresh}</span>
-            <button type="button" className="livenow__refresh" onClick={() => { refresh && refresh(); window.__click?.(); }} onMouseEnter={()=>window.__hover?.()}>
+            <span>{loading ? t.syncing : t.autoRefresh}</span>
+            <button type="button" className={`livenow__refresh ${loading?'is-loading':''}`}
+                    onClick={() => { refresh && refresh(); window.__click?.(); }}
+                    onMouseEnter={()=>window.__hover?.()}>
               <Refresh/><span>{t.refreshNow}</span>
             </button>
           </div>
