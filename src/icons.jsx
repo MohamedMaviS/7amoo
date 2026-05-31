@@ -11,8 +11,8 @@ const Icon = {
     </svg>
   ),
   Kick: () => (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M3 3h4.5v5.25h1.5V6.75h1.5V5.25h1.5V3.75h1.5V3H18v4.5h-1.5v1.5H15v1.5h-1.5v1.5h-1.5V12H15v1.5h1.5V15H18v4.5h-4.5v-1.5H12v-1.5h-1.5v-1.5H9v-1.5H7.5V21H3V3z"/>
+    <svg viewBox="0 0 36 36" fill="currentColor" aria-hidden="true">
+      <path d="M0 0h9v9h3V6h3V3h3V0h9v9h-3v3h-3v3h-3v3h-3v3h3v3h3v3h3v3h3v9h-9v-3h-3v-3h-3v-3h-3v-3h-3v9H0V0z"/>
     </svg>
   ),
   TikTok: () => (
