@@ -9,8 +9,8 @@ const CHANNELS = [
   { key:'instagram', name:'INSTAGRAM', handle:'@7amo0_69',                url:'https://www.instagram.com/7amo0_69',                         color:'#e1306c', icon:'Instagram' },
   { key:'discord',   name:'DISCORD',   handle:'discord.gg/fgas9B2wv2',    url:'https://discord.gg/fgas9B2wv2',                              color:'#5865f2', icon:'Discord' },
   { key:'whatsapp',  name:'WHATSAPP',  handle:'Official channel',         url:'https://whatsapp.com/channel/0029VbCG8yeGU3BLMmKebm0T',      color:'#25d366', icon:'WhatsApp' },
-  { key:'donate',    name:'INSTAPAY',  handle:INSTAPAY_HANDLE,            url:INSTAPAY_URL,                                                 color:'#ff7a00', icon:'InstaPay' },
 ];
+// InstaPay isn't a hub row (the QR card below covers it) — only used by the QR card.
 
 const LOGO_FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(
   "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#eafff0'/><stop offset='.55' stop-color='#2bff88'/><stop offset='1' stop-color='#00b25a'/></linearGradient><radialGradient id='b' cx='.5' cy='.45' r='.6'><stop offset='0' stop-color='#0c2417'/><stop offset='1' stop-color='#070b08'/></radialGradient></defs><rect width='600' height='600' fill='url(#b)'/><circle cx='300' cy='300' r='210' fill='none' stroke='#2bff88' stroke-opacity='.3' stroke-width='3'/><text x='50%' y='56%' font-family='Arial Black,Impact,sans-serif' font-size='340' font-weight='900' fill='url(#g)' text-anchor='middle' dominant-baseline='middle'>7</text></svg>"
