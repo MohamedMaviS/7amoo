@@ -14,7 +14,8 @@ const I18N = {
     chTitleA:'EVERY CHANNEL.',
     chTitleB:'ONE PLACE.',
     chSub:'Pick your platform. The stream never sleeps.',
-    act:{ kick:'Watch live', tiktok:'Follow', instagram:'Follow', discord:'Join server', whatsapp:'Join channel' },
+    act:{ kick:'Watch live', tiktok:'Follow', instagram:'Follow', discord:'Join server', whatsapp:'Join channel', donate:'Send a tip' },
+    qrScan:'SCAN TO SUPPORT', qrHeader:'Tip 7amoo on InstaPay', qrCta:'Open InstaPay',
 
     aboutTag:'WHO IS',
     aboutTitle:'7amoo',
@@ -56,7 +57,8 @@ const I18N = {
     chTitleA:'كل القنوات،',
     chTitleB:'في مكان واحد.',
     chSub:'اختار منصتك، والستريم مبينامش.',
-    act:{ kick:'شوف اللايف', tiktok:'تابِع', instagram:'تابِع', discord:'ادخل السيرفر', whatsapp:'ادخل القناة' },
+    act:{ kick:'شوف اللايف', tiktok:'تابِع', instagram:'تابِع', discord:'ادخل السيرفر', whatsapp:'ادخل القناة', donate:'ابعت دعم' },
+    qrScan:'امسح وادعم', qrHeader:'ادعم حمو على InstaPay', qrCta:'افتح InstaPay',
 
     aboutTag:'مين هو',
     aboutTitle:'7amoo',

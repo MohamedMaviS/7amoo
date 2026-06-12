@@ -1,12 +1,15 @@
 const { useContext } = React;
 
 const KICK_USER = '7amoo_69';
+const INSTAPAY_URL = 'https://ipn.eg/S/x7amoo/instapay/0lOUlv';
+const INSTAPAY_HANDLE = 'x7amoo@instapay';
 const CHANNELS = [
   { key:'kick',      name:'KICK',      handle:'kick.com/7amoo_69',        url:'https://kick.com/7amoo_69',                                  color:'#53fc18', icon:'Kick' },
   { key:'tiktok',    name:'TIKTOK',    handle:'@hamo_eldiesel',           url:'https://www.tiktok.com/@hamo_eldiesel',                      color:'#ff3e6a', icon:'TikTok' },
   { key:'instagram', name:'INSTAGRAM', handle:'@7amo0_69',                url:'https://www.instagram.com/7amo0_69',                         color:'#e1306c', icon:'Instagram' },
   { key:'discord',   name:'DISCORD',   handle:'discord.gg/fgas9B2wv2',    url:'https://discord.gg/fgas9B2wv2',                              color:'#5865f2', icon:'Discord' },
   { key:'whatsapp',  name:'WHATSAPP',  handle:'Official channel',         url:'https://whatsapp.com/channel/0029VbCG8yeGU3BLMmKebm0T',      color:'#25d366', icon:'WhatsApp' },
+  { key:'donate',    name:'INSTAPAY',  handle:INSTAPAY_HANDLE,            url:INSTAPAY_URL,                                                 color:'#ff7a00', icon:'Donate' },
 ];
 
 const LOGO_FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(
@@ -106,8 +109,33 @@ function Channels({ isLive }) {
             );
           })}
         </div>
+        <QRCard url={INSTAPAY_URL} handle={INSTAPAY_HANDLE}/>
       </div>
     </section>
+  );
+}
+
+/* ---------------- QR CARD (InstaPay donate) ---------------- */
+function QRCard({ url, handle }) {
+  const { t } = useContext(LangContext);
+  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(url)}&size=320x320&color=eafff0&bgcolor=070b08&margin=14&qzone=2&format=png`;
+  return (
+    <a className="qrcard rv" href={url} target="_blank" rel="noopener noreferrer"
+       data-tilt="4" onMouseEnter={()=>window.__hover?.()} onClick={()=>window.__click?.()}>
+      <span className="qrcard__qr">
+        <img src={qrSrc} alt="InstaPay QR — Tip 7amoo" loading="lazy" decoding="async"/>
+      </span>
+      <span className="qrcard__body">
+        <span className="qrcard__kicker">{t.qrScan}</span>
+        <span className="qrcard__title">{t.qrHeader}</span>
+        <span className="qrcard__handle mono" dir="ltr">{handle}</span>
+        <span className="qrcard__cta">
+          <Icon.Donate/>
+          <span>{t.qrCta}</span>
+          <Icon.Arrow/>
+        </span>
+      </span>
+    </a>
   );
 }
 

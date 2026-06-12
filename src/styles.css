@@ -256,6 +256,72 @@
   .row__act-txt{ display:none; }
 }
 
+/* ---------- QR / INSTAPAY DONATE CARD ---------- */
+.qrcard{
+  --qc:#ff7a00;
+  position:relative; display:flex; align-items:center; gap:20px;
+  padding:18px 22px; margin-top:14px; border-radius:var(--r); overflow:hidden;
+  background:linear-gradient(120deg, color-mix(in oklab, var(--qc) 14%, var(--bg-2)), var(--bg-3));
+  border:1px solid color-mix(in oklab, var(--qc) 40%, transparent);
+  box-shadow:0 16px 44px rgba(0,0,0,.45), 0 0 28px color-mix(in oklab, var(--qc) 18%, transparent);
+  text-decoration:none; color:var(--text); cursor:pointer;
+  transition:transform .4s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .35s;
+}
+.qrcard::before{
+  content:''; position:absolute; top:0; bottom:0; left:-60%; width:40%;
+  background:linear-gradient(105deg, transparent, color-mix(in oklab, var(--qc) 22%, transparent), transparent);
+  transform:skewX(-16deg); transition:left .65s ease; pointer-events:none;
+}
+.qrcard:hover{
+  transform:translateY(-4px);
+  border-color:var(--qc);
+  box-shadow:0 24px 60px rgba(0,0,0,.5), 0 0 44px color-mix(in oklab, var(--qc) 32%, transparent);
+}
+.qrcard:hover::before{ left:120%; }
+.qrcard__qr{
+  position:relative; z-index:1; flex-shrink:0;
+  width:112px; height:112px; padding:8px; border-radius:14px;
+  background:#070b08;
+  border:1px solid color-mix(in oklab, var(--qc) 35%, transparent);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+}
+.qrcard__qr img{ width:100%; height:100%; display:block; image-rendering:pixelated; }
+.qrcard__body{ position:relative; z-index:1; display:flex; flex-direction:column; gap:5px; flex:1; min-width:0; }
+.qrcard__kicker{
+  font-family:var(--f-body); font-weight:800; font-size:10.5px; letter-spacing:.32em;
+  color:var(--qc); text-transform:uppercase; text-shadow:0 0 12px color-mix(in oklab, var(--qc) 40%, transparent);
+}
+.qrcard__title{
+  font-family:var(--f-head); font-weight:800; font-size:clamp(18px, 2.4vw, 23px);
+  color:var(--text); line-height:1.2;
+}
+.qrcard__handle{
+  font-size:12px; color:var(--dim); letter-spacing:.06em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.qrcard__cta{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-top:6px; padding:8px 14px; border-radius:999px; align-self:flex-start;
+  background:color-mix(in oklab, var(--qc) 18%, transparent);
+  border:1px solid color-mix(in oklab, var(--qc) 50%, transparent);
+  color:var(--qc); font-weight:800; font-size:12.5px; letter-spacing:.04em;
+  transition:background .25s, transform .25s;
+}
+.qrcard:hover .qrcard__cta{ background:var(--qc); color:#1a0a00; transform:translateX(3px); }
+[dir="rtl"] .qrcard:hover .qrcard__cta{ transform:translateX(-3px); }
+.qrcard__cta svg{ width:13px; height:13px; }
+[dir="rtl"] .qrcard__cta svg:last-child{ transform:rotate(180deg); }
+@media (max-width:560px){
+  .qrcard{ gap:14px; padding:16px; border-radius:18px; }
+  .qrcard__qr{ width:96px; height:96px; padding:6px; border-radius:12px; }
+  .qrcard__title{ font-size:16px; }
+  .qrcard__handle{ font-size:11px; }
+  .qrcard__cta{ font-size:11.5px; padding:7px 12px; }
+}
+@media (max-width:380px){
+  .qrcard{ flex-direction:column; align-items:flex-start; text-align:start; }
+  .qrcard__qr{ width:100%; max-width:160px; height:auto; aspect-ratio:1/1; align-self:center; }
+}
+
 /* ---------- ABOUT ---------- */
 .about__grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:54px; align-items:center; }
 @media (max-width:920px){ .about__grid{ grid-template-columns:1fr; gap:34px; } }
