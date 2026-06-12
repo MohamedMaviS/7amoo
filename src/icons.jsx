@@ -62,6 +62,20 @@ const Icon = {
       <path d="M12 21s-7-4.5-9.3-9.3C1.3 8.6 2.9 5 6.3 5c2 0 3.7 1.1 4.7 2.7C12 6.1 13.7 5 15.7 5c3.4 0 5 3.6 3.6 6.7C19 16.5 12 21 12 21z"/>
     </svg>
   ),
+  /* InstaPay brand mark — italic "i" + double chevron + "P" on a white app badge */
+  InstaPay: () => (
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <rect width="48" height="48" rx="11" fill="#fff"/>
+      <g transform="translate(7,9) scale(0.74,0.86) translate(-4.4,-3)">
+        <path d="M11 3 L17 3 L15 9.5 L9 9.5 Z" fill="#4d2178"/>
+        <path d="M9.2 12.5 L16 12.5 L11.2 37 L4.4 37 Z" fill="#4d2178"/>
+        <path d="M17.5 12.5 L23.6 12.5 L31 24.7 L23.3 37 L17.2 37 L24.6 24.7 Z" fill="#ec7d6d"/>
+        <path d="M25 12.5 L31.1 12.5 L38.5 24.7 L30.8 37 L24.7 37 L32.1 24.7 Z" fill="#ef6a26"/>
+        <path d="M41 12.5 L47.6 12.5 L42.8 37 L36 37 Z" fill="#6b3a9e"/>
+        <path d="M44 12.5 C 51.5 11.6 54.5 20.2 48.6 24 C 46.2 25.5 42.8 25.3 40.6 24.6 L42.2 16.4 Z" fill="#6b3a9e"/>
+      </g>
+    </svg>
+  ),
   Bolt: () => (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M13 2 3 14h7l-1 8L21 10h-7l1-8z"/>

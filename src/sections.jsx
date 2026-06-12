@@ -9,7 +9,7 @@ const CHANNELS = [
   { key:'instagram', name:'INSTAGRAM', handle:'@7amo0_69',                url:'https://www.instagram.com/7amo0_69',                         color:'#e1306c', icon:'Instagram' },
   { key:'discord',   name:'DISCORD',   handle:'discord.gg/fgas9B2wv2',    url:'https://discord.gg/fgas9B2wv2',                              color:'#5865f2', icon:'Discord' },
   { key:'whatsapp',  name:'WHATSAPP',  handle:'Official channel',         url:'https://whatsapp.com/channel/0029VbCG8yeGU3BLMmKebm0T',      color:'#25d366', icon:'WhatsApp' },
-  { key:'donate',    name:'INSTAPAY',  handle:INSTAPAY_HANDLE,            url:INSTAPAY_URL,                                                 color:'#ff7a00', icon:'Donate' },
+  { key:'donate',    name:'INSTAPAY',  handle:INSTAPAY_HANDLE,            url:INSTAPAY_URL,                                                 color:'#ff7a00', icon:'InstaPay' },
 ];
 
 const LOGO_FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(
@@ -130,7 +130,7 @@ function QRCard({ url, handle }) {
         <span className="qrcard__title">{t.qrHeader}</span>
         <span className="qrcard__handle mono" dir="ltr">{handle}</span>
         <span className="qrcard__cta">
-          <Icon.Donate/>
+          <span className="qrcard__cta-ip"><Icon.InstaPay/></span>
           <span>{t.qrCta}</span>
           <Icon.Arrow/>
         </span>

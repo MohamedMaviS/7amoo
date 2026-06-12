@@ -310,6 +310,12 @@
 [dir="rtl"] .qrcard:hover .qrcard__cta{ transform:translateX(-3px); }
 .qrcard__cta svg{ width:13px; height:13px; }
 [dir="rtl"] .qrcard__cta svg:last-child{ transform:rotate(180deg); }
+.qrcard__cta-ip{ display:inline-flex; width:18px; height:18px; flex-shrink:0; }
+.qrcard__cta-ip svg{ width:18px; height:18px; border-radius:5px; box-shadow:0 1px 3px rgba(0,0,0,.3); }
+/* InstaPay badge in the hub row token: drop the orange tint backing so the white badge sits clean */
+.row[style*="ff7a00"] .row__tok{ background:transparent; border-color:color-mix(in oklab,#ff7a00 45%,transparent); }
+.row__tok .qrcard__cta-ip,
+.row__tok svg[viewBox="0 0 48 48"]{ border-radius:11px; }
 @media (max-width:560px){
   .qrcard{ gap:14px; padding:16px; border-radius:18px; }
   .qrcard__qr{ width:96px; height:96px; padding:6px; border-radius:12px; }
