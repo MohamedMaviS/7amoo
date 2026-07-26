@@ -1,10 +1,10 @@
 const { useContext } = React;
 
-const KICK_USER = '7amoo_69';
+const KICK_USER = '7amoo';
 const INSTAPAY_URL = 'https://ipn.eg/S/x7amoo/instapay/0lOUlv';
 const INSTAPAY_HANDLE = 'x7amoo@instapay';
 const CHANNELS = [
-  { key:'kick',      name:'KICK',      handle:'kick.com/7amoo_69',        url:'https://kick.com/7amoo_69',                                  color:'#53fc18', icon:'Kick' },
+  { key:'kick',      name:'KICK',      handle:'kick.com/7amoo',           url:'https://kick.com/7amoo',                                     color:'#53fc18', icon:'Kick' },
   { key:'tiktok',    name:'TIKTOK',    handle:'@hamo_eldiesel',           url:'https://www.tiktok.com/@hamo_eldiesel',                      color:'#ff3e6a', icon:'TikTok' },
   { key:'instagram', name:'INSTAGRAM', handle:'@7amo0_69',                url:'https://www.instagram.com/7amo0_69',                         color:'#e1306c', icon:'Instagram' },
   { key:'discord',   name:'DISCORD',   handle:'discord.gg/fgas9B2wv2',    url:'https://discord.gg/fgas9B2wv2',                              color:'#5865f2', icon:'Discord' },
@@ -247,8 +247,8 @@ function LiveStatus() {
   const { t, lang } = useContext(LangContext);
   const live = React.useContext(LiveContext);
   const { isLive, title, viewers, game, refresh, loading } = live || {};
-  const KICK_URL = 'https://kick.com/7amoo_69';
-  const HANDLE = 'kick.com/7amoo_69';
+  const KICK_URL = `https://kick.com/${KICK_USER}`;
+  const HANDLE = `kick.com/${KICK_USER}`;
   const fmtNum = (n) => (typeof n === 'number' ? n.toLocaleString(lang === 'ar' ? 'ar-EG' : 'en-US') : '0');
   const Eye = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>);
   const Refresh = () => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15.5-6.36L21 8"/><polyline points="21 3 21 8 16 8"/><path d="M21 12a9 9 0 0 1-15.5 6.36L3 16"/><polyline points="3 21 3 16 8 16"/></svg>);
@@ -274,7 +274,7 @@ function LiveStatus() {
 
               <div className="livenow__embed">
                 <iframe
-                  src={`https://player.kick.com/7amoo_69?autoplay=true&muted=true`}
+                  src={`https://player.kick.com/${KICK_USER}?autoplay=true&muted=true`}
                   title="7amoo live on Kick"
                   allow="autoplay; fullscreen; picture-in-picture"
                   loading="lazy"
